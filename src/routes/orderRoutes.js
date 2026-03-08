@@ -22,6 +22,8 @@ const router = Router();
  *   post:
  *     summary: Criar um novo pedido
  *     tags: [Orders]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -36,7 +38,7 @@ const router = Router();
  *               dataCriacao:
  *                 type: string
  *                 format: date-time
- *                 example: "2023-07-19T12:24:11.5299601+00:00"
+ *                 example: "2026-03-07T12:00:00.000+00:00"
  *               items:
  *                 type: array
  *                 items:
@@ -56,8 +58,6 @@ const router = Router();
  *         description: Pedido criado com sucesso
  *       400:
  *         description: Campos obrigatórios ausentes
- *       409:
- *         description: Pedido já existe
  *       500:
  *         description: Erro interno
  */
@@ -69,6 +69,8 @@ router.post('/', createOrder);
  *   get:
  *     summary: Listar todos os pedidos
  *     tags: [Orders]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de pedidos retornada com sucesso
@@ -83,6 +85,8 @@ router.get('/list', listOrders);
  *   get:
  *     summary: Obter pedido pelo número
  *     tags: [Orders]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: numeroPedido
@@ -106,6 +110,8 @@ router.get('/:numeroPedido', getOrder);
  *   put:
  *     summary: Atualizar um pedido pelo número
  *     tags: [Orders]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: numeroPedido
@@ -151,6 +157,8 @@ router.put('/:numeroPedido', updateOrder);
  *   delete:
  *     summary: Deletar um pedido pelo número
  *     tags: [Orders]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: numeroPedido
